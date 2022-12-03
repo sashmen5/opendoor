@@ -12,6 +12,8 @@ import { useHomesManagerStore } from '../root-store';
 
 export const HeaderContent = observer(() => {
   const { filter, setFilter, loading } = useHomesManagerStore();
+  console.log({ loading });
+
   return (
     <Wrapper>
       <Hidden mdDown>

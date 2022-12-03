@@ -60,11 +60,14 @@ export class HomeManagerStore {
       const response = await sdk
         .fetchHomes({ search: this.filter, cancelToken: source.token })
         .then(res => res.data);
+
       this._homes = response.results;
       source = undefined;
-    } catch (e) {
-    } finally {
       this.loading = false;
+    } catch (e) {
+      if (!axios.isCancel(e)) {
+        this.loading = false;
+      }
     }
   }
 }
